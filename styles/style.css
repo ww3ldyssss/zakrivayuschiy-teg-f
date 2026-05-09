@@ -282,7 +282,6 @@
   font-size: var(--button-text-font-size);
   line-height: 90%;
   color: var(--button-text-color);
-  mix-blend-mode: difference;
 }
 
 .second-section {
