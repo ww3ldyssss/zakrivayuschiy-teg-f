@@ -1,14 +1,3 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
 @supports not ((text-stroke: 1px var(--label-stroke-color)) or (-webkit-text-stroke: 1px var(--label-stroke-color))) {
   .card__watermark {
     text-shadow: 
@@ -23,30 +12,35 @@
   min-inline-size: 320px;
   min-block-size: 100dvh;
   font-family: var(--main-font-family),sans-serif;
-  font-variation-settings: var(--text-font-weight);
+  font-variation-settings: "wght" 410;
   background-image: var(--gradient-page);
   background-size: cover;
   background-attachment: fixed;
 }
 
 .header {
-  display: grid;
-  max-block-size: 368px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: var(--container-width);
   background-color: #fff;
   margin: 100px auto;
   border: 2px solid #000;
   box-sizing: border-box;
+  padding: 130px 122.5px;
 }
 
 .logo-group {
-  max-block-size: 112px;
-  margin: 130px 122.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .logo__code {
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family), sans-serif;
   font-size: var(--logo-html-size);
 }
 
@@ -54,7 +48,7 @@
   display: grid;
   justify-self: center;
   padding-top: 20px;
-  font-family: var(--accent-font-family);
+  font-family: var(--accent-font-family), sans-serif;
   font-size: var(--logo-tag-size);
   text-transform: uppercase;
 }
@@ -81,11 +75,10 @@
 
 .section-title {
   font-family: var(--main-font-family),sans-serif;
-  font-variation-settings: var(--title-font-weight);
+  font-variation-settings: "wght" 715;
   width: 100%;
   max-width: 676px;
   padding: 4px 10px;
-  block-size: 30px;
   font-size: var(--main-font-size);
   line-height: 100%;
   box-sizing: border-box;
@@ -107,7 +100,6 @@
 .card__watermark {
   font-family: var(--accent-font-family),sans-serif;
   max-inline-size: 98px;
-  max-block-size: 14px;
   font-size: 14px;
   line-height: 100%;
   position: absolute;
@@ -131,7 +123,6 @@
   width: 100%;
   max-width: 646px;
   margin: 0 auto;
-  padding: 0 25px;
   box-sizing: border-box;
 }
 
@@ -143,13 +134,11 @@
 
 .card__actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: end;
   align-items: center;
-  width: 100%;
-  max-width: 646px;
-  margin: 0 auto 25px;
-  padding: 0 25px;
-  gap: 12px;
+  margin-block-end: 25px;
+  margin-right: 25px;
+  gap: 7px;
   box-sizing: border-box;
 }
 
@@ -177,7 +166,6 @@
 }
 
 .like-icon:hover .core {
-  opacity: 1;
   fill: var(--icon-contour-color);
   transition: fill 0.3s linear 0s;
 }
@@ -273,7 +261,7 @@
   background-color: #000;
   transform-origin: top left;
   scale: 0 1;
-  transition: 0.5s ease-in-out;
+  transition: scale 0.5s ease-in-out;
   z-index: 0;
 }
 
@@ -283,6 +271,9 @@
 
 .button:focus {
   outline: none;
+}
+
+.button:focus-visible {
   box-shadow: 2px 2px 0px 0px #000;
 }
 
@@ -291,16 +282,12 @@
   block-size: 38px;
 }
 
-.card__like-button::after {
-  z-index: 0;
-}
-
 .button__text {
   position: relative;
   z-index: 1;
   mix-blend-mode: difference;
-  max-inline-size: 56px;
-  font-family: var(--accent-font-family);
+  align-content: center;
+  font-family: var(--accent-font-family), sans-serif;
   font-size: var(--button-text-font-size);
   line-height: 90%;
   color: var(--button-text-color);
@@ -426,23 +413,6 @@
   block-size: 55px;
 }
 
-.dialog-button::after {
-  z-index: 0;
-}
-
-.dialog-button:focus {
-  transition: box-shadow 0.3s ease;
-}
-
-.dialog__text {
-  justify-self: center;
-  align-self: center;
-  font-family: var(--accent-font-family);
-  font-size: 14px;
-  max-inline-size: 266px;
-  max-block-size: 14px;
-}
-
 .floppy-icon {
   position: relative;
   color: var(--button-text-color);
@@ -466,15 +436,13 @@ dialog[open] {
 }
 
 dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.3);
-  backdrop-filter: blur(7px);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .content__opened-dialog {
   display: flex;
   align-items: center;
   max-inline-size: 293px;
-  block-size: 63px;
   margin-block-start: 30px;
   margin-right: 30px;
   margin-left: 30px;
@@ -487,8 +455,8 @@ dialog::backdrop {
 }
 
 .opened-dialog__text {
+  font-family: var(--accent-font-family), sans-serif;
   max-inline-size: 234px;
-  max-block-size: 63px;
   text-transform: uppercase;
   line-height: 150%;
 }
@@ -504,78 +472,150 @@ dialog::backdrop {
   cursor: pointer;
 }
 
-@media (max-width: 767px) {
-  .header, .main, .section {
+@media (width > 375px) and (width < 1440px) {
+  .header {
+    max-width: var(--container-width);
     width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0 16px;
+    margin: clamp(60px, 6.94vw, 100px) auto;
+    padding: clamp(60px, 9vw, 130px) clamp(16px, 8.5vw, 122.5px);
     box-sizing: border-box;
   }
-  .header {
-    margin-top: 40px;
-    margin-bottom: 40px;
+
+  .logo__tag {
+    white-space: nowrap;
+    font-size: clamp(16px, 1.6vw, var(--logo-tag-size));
+    padding-top: clamp(10px, 1.4vw, 20px);
   }
-  .logo-group {
-    margin: 40px auto;
+
+  .logo__code {
+    font-size: clamp(36px, 4.5vw, var(--logo-html-size));
   }
-  .section-title {
+
+  .main {
+    max-width: var(--container-width);
     width: 100%;
-    max-width: 100%;
-    block-size: auto;
-    padding: 8px 4px;
-    font-size: 16px;
-    line-height: 1.3;
+    margin-left: auto;
+    margin-right: auto;
+    margin-block-end: clamp(60px, 6.94vw, 100px);
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .section {
+    max-width: var(--container-width);
+    width: 100%;
+    margin: 0 auto clamp(30px, 3.47vw, 50px);
+    box-sizing: border-box;
+  }
+
+  .section-title {
+    max-width: clamp(310px, 47vw, 676px);
+    width: 100%;
+    padding: clamp(4px, 0.5vw, 10px) clamp(6px, 0.7vw, 10px);
+    font-size: clamp(15px, 1.2vw, var(--main-font-size));
+    line-height: 100%;
+    box-sizing: border-box;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    box-sizing: border-box;
   }
-  .card__image, .image {
+
+  .card__image {
+    max-block-size: none;
+    width: 100%;
+  }
+
+  .image {
     width: 100%;
     max-width: 100%;
     height: auto;
-    block-size: auto;
+    display: block;
   }
-  .card__content, .text__content {
+
+  .card__watermark {
+    font-family: var(--accent-font-family), sans-serif;
+    max-inline-size: clamp(70px, 6.8vw, 98px);
+    font-size: clamp(12px, 0.97vw, 14px);
+    line-height: 100%;
+    position: absolute;
+    top: clamp(16px, 1.74vw, 25px);
+    right: clamp(16px, 1.74vw, 25px);
+    mix-blend-mode: hard-light;
+    -webkit-text-stroke: 1px var(--label-stroke-color);
+  }
+
+  .card__content {
+    max-width: clamp(345px, 48.3vw, 696px);
     width: 100%;
-    max-width: 100%;
-    max-block-size: none;
-    block-size: auto;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
   }
+
+  .text__content {
+    font-family: var(--main-font-family), sans-serif;
+    font-size: clamp(14px, 1.2vw, var(--main-font-size));
+    line-height: 21px;
+    max-width: clamp(295px, 44.9vw, 646px);
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
   .card__text {
-    margin: 16px 0;
-    font-size: 14px;
-    line-height: 1.4;
+    margin: clamp(16px, 1.74vw, 25px) 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
+  }
+
+  .card__actions {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-block-end: clamp(16px, 1.74vw, 25px);
+    margin-right: clamp(16px, 1.74vw, 25px);
+    gap: clamp(4px, 0.5vw, 7px);
+    box-sizing: border-box;
+  }
+
+  /* Сброс фиксированных размеров для всех карточек */
+  .second-card-text__content,
+  .third-card-text__content,
+  .fourth-card-text__content,
+  .fifth-card-text__content,
+  .sixth-card-text__content,
+  .seventh-card-text__content,
+  .eight-card-text__content {
+    max-block-size: none;
+    max-inline-size: clamp(295px, 44.9vw, 646px);
+  }
+
+  .second-card__text,
+  .third-card__text,
+  .fourth-card__text,
+  .fifth-card__text,
+  .sixth-card__text,
+  .seventh-card__text,
+  .eighth-card__text {
     max-block-size: none;
   }
-  .card__actions {
-    width: 100%;
-    max-width: 100%;
-    margin: 12px 0 24px;
-    padding: 0;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+
+  .second-card__content,
+  .third-card__content,
+  .fourth-card__content,
+  .fifth-card__content,
+  .sixth-card__content,
+  .seventh-card__content,
+  .eighth-card__content {
+    max-block-size: none;
+    max-width: clamp(345px, 48.3vw, 696px);
   }
+
   .dialog-button {
-    width: calc(100% - 32px);
-    max-width: 335px;
-    margin: 0 auto 40px;
-  }
-  .content__opened-dialog {
-    width: 100%;
-    max-width: 100%;
-    margin: 20px 16px;
-  }
-  .opened-dialog-button {
-    width: calc(100% - 32px);
-    max-width: 293px;
-    margin: 16px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-self: center;
+    inline-size: clamp(280px, 23vw, 335px);
+    block-size: clamp(50px, 3.8vw, 55px);
   }
 }
 
@@ -583,11 +623,7 @@ dialog::backdrop {
   .header {
     max-block-size: 327px;
     margin: 100px 0px;
-  }
-
-  .logo-group {
-    max-block-size: 83px;
-    margin: 122px 16px;
+    padding: 122px 16px;
   }
 
   .main {
@@ -595,13 +631,8 @@ dialog::backdrop {
     margin-left: 0px;
   }
 
-  .first-section {
-    max-inline-size: 375px;
-  }
-
   .section-title {
     max-inline-size: 371px;
-    block-size: 52px;
     align-content: center;
   }
 
@@ -615,8 +646,8 @@ dialog::backdrop {
   }
 
   .card__content {
-    max-inline-size: 371px;
-    max-block-size: 327px;
+    max-inline-size: 100%;
+    max-block-size: 100%;
   }
 
   .text__content {
@@ -625,22 +656,9 @@ dialog::backdrop {
   }
 
   .card__text {
-    max-block-size: 147px;
+    max-block-size: 100%;
   }
-
-  .card__hint {
-    max-block-size: 42px;
-  }
-
-  .second-section {
-    max-inline-size: 375px;
-  }
-
-  .second-card__content {
-    max-inline-size: 371px;
-    max-block-size: 411px;
-  }
-
+  
   .second-card-text__content {
     max-inline-size: 321px;
     max-block-size: 298px
@@ -648,10 +666,6 @@ dialog::backdrop {
 
   .second-card__text {
     max-block-size: 231px;
-  }
-
-  .fourth-section {
-    max-inline-size: 375px;
   }
 
   .fourth-card__content {
@@ -666,10 +680,6 @@ dialog::backdrop {
 
   .fourth-card__text {
     max-block-size: 210px;
-  }
-
-  .fifth-section {
-    max-inline-size: 375px;
   }
 
   .fifth-card__content {
@@ -698,10 +708,6 @@ dialog::backdrop {
 
   .seventh-card__text {
     max-block-size: 189px;
-  }
-
-  .eighth-section {
-    max-inline-size: 375px;
   }
 
   .eighth-card__content {
@@ -751,6 +757,7 @@ dialog::backdrop {
   .opened-dialog__text {
     inline-size: 234px;
     max-block-size: 63px;
+    font-size: var(--button-text-font-size);
   }
 
   .opened-dialog-button {
