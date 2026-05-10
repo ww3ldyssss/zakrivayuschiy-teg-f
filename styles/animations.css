@@ -1,17 +1,23 @@
 @keyframes scale {
-    from {
+    0% {
         transform: scale(1);
     }
-    to {
+    50% {
         transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
 @keyframes flash {
-    from {
+    0% {
         opacity: 0;
     }
-    to {
+    50% {
         opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }

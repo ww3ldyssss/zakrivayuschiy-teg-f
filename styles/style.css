@@ -32,10 +32,12 @@
 .header {
   display: grid;
   max-block-size: 368px;
-  max-inline-size: var(--container-width);
+  width: 100%;
+  max-width: var(--container-width);
   background-color: #fff;
-  margin: 100px 370px;
+  margin: 100px auto;
   border: 2px solid #000;
+  box-sizing: border-box;
 }
 
 .logo-group {
@@ -60,39 +62,46 @@
 .main {
   display: grid;
   justify-self: center;
+  width: 100%;
+  max-width: var(--container-width);
   margin-block-end: 100px;
-  margin-right: 370px;
-  margin-left: 370px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .section {
-  max-inline-size: var(--container-width);
+  width: 100%;
+  max-width: var(--container-width);
   background-color: #fff;
   border: 2px solid #000;
-  margin-block-end: 50px;
-}
-
-.first-section {
-  max-block-size: 956px;
+  margin: 0 auto 50px;
+  box-sizing: border-box;
 }
 
 .section-title {
   font-family: var(--main-font-family),sans-serif;
-  max-inline-size: 676px;
+  font-variation-settings: var(--title-font-weight);
+  width: 100%;
+  max-width: 676px;
   padding: 4px 10px;
   block-size: 30px;
   font-size: var(--main-font-size);
   line-height: 100%;
+  box-sizing: border-box;
 }
 
 .card__image {
   position: relative;
   max-block-size: 696px;
+  width: 100%;
 }
 
-.image-truck {
-  inline-size: 696px;
-  max-block-size: 696px;
+.image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .card__watermark {
@@ -109,42 +118,46 @@
 }
 
 .card__content {
-  max-inline-size: 696px;
-  max-block-size: 222px;
+  width: 100%;
+  max-width: 696px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .text__content {
   font-family: var(--main-font-family), sans-serif;
   font-size: var(--main-font-size);
   line-height: 21px;
-  max-inline-size: 646px;
-  max-block-size: 109px;
-  margin: 0 25px;
+  width: 100%;
+  max-width: 646px;
+  margin: 0 auto;
+  padding: 0 25px;
+  box-sizing: border-box;
 }
 
 .card__text {
-  margin-block-start: 25px;
-  max-block-size: 63px;
-}
-
-.card__hint {
-  margin-block-start: 25px;
-  margin-block-end: 25px;
-  max-block-size: 21px;
+  margin: 25px 0px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .card__actions {
   display: flex;
-  justify-self: right;
+  justify-content: flex-end;
   align-items: center;
-  max-inline-size: 169px;
-  max-block-size: 38px;
+  width: 100%;
+  max-width: 646px;
+  margin: 0 auto 25px;
+  padding: 0 25px;
   gap: 12px;
-  margin-right: 25px;
-  margin-block-end: 25px;
+  box-sizing: border-box;
 }
 
 .card__icon-button {
+  min-inline-size: 38px; 
+  min-block-size: 38px;
+  display: grid;
+  place-items: center;
   background: transparent;
   border: 2px solid transparent;
   block-size: 38px;
@@ -153,11 +166,12 @@
   box-sizing: border-box;
   transition: border-color 0.3s ease;
   cursor: pointer;
+  overflow: visible;
 }
 
 .like-icon {
-  max-inline-size: 39px;
-  max-block-size: 36px;
+  min-inline-size: 27px; 
+  min-block-size: 24px;
   transform-origin: center;
   overflow: visible;
 }
@@ -205,11 +219,15 @@
 }
 
 .like-icon.is-liked .heart {
-  animation: scale 0.3s ease-in 0.1s forwards;
+  animation: scale 0.3s ease-in 0.1s;
 }
 
 .like-icon.is-liked .sparks {
-  animation: flash 0.3s ease-in 0.3s forwards;
+  animation: flash 0.3s ease-in 0.3s;
+}
+
+.heart {
+  transform-origin: center;
 }
 
 .contour {
@@ -217,14 +235,11 @@
 }
 
 .core {
-  opacity: 0;
-  transition: opacity 0.3s linear 0.03s;
+  transition: fill 0.3s linear 0.03s;
 }
 
-
 .main-body {
-  opacity: 0;
-  transition: opacity 0.3s linear 0s;
+  transition: fill 0.3s linear 0s;
 }
 
 .sparks {
@@ -239,23 +254,16 @@
   border-color: #000;
 }
 
-.card__like-button {
+.button {
   position: relative;
-  inline-size: 130px;
-  block-size: 38px;
   border: 2px solid #000;
   padding: 0;
   background-color: #fff;
   cursor: pointer;
-}
-
-.card__like-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0px 0px #000;
   transition: box-shadow 0.3s ease;
 }
 
-.card__like-button::after {
+.button::after {
   content: '';
   position: absolute;
   top: 0;
@@ -269,8 +277,22 @@
   z-index: 0;
 }
 
-.card__like-button:hover::after {
+.button:hover::after {
   scale: 1 1;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0px 0px #000;
+}
+
+.card__like-button {
+  inline-size: 130px;
+  block-size: 38px;
+}
+
+.card__like-button::after {
+  z-index: 0;
 }
 
 .button__text {
@@ -284,22 +306,15 @@
   color: var(--button-text-color);
 }
 
-.second-section {
-  max-inline-size: 700;
-  max-block-size: 998px;
-}
-
-.second-section_image {
+.image-brightness {
   filter: brightness(300%);
 }
 
 .second-card__content {
-  max-inline-size: 696px;
   max-block-size: 264px;
 }
 
 .second-card-text__content {
-  max-inline-size: 646px;
   max-block-size: 151px;
 }
 
@@ -307,11 +322,7 @@
   max-block-size: 105px;
 }
 
-.third-section {
-  max-block-size: 956px;
-}
-
-.third-section_image {
+.image-contrast {
   filter: contrast(200%);
 }
 
@@ -323,11 +334,7 @@
   max-block-size: 63px;
 }
 
-.fourth-section {
-  max-block-size: 998px;
-}
-
-.fourth-section_image {
+.image-rotate {
   filter: hue-rotate(-90deg);
 }
 
@@ -343,11 +350,7 @@
   max-block-size: 105px;
 }
 
-.fifth-section {
-  max-block-size: 1019px;
-}
-
-.fifth-section_image {
+.image-sepia {
   filter: sepia(90%);
 }
 
@@ -363,11 +366,7 @@
   max-block-size: 126px;
 }
 
-.sixth-section {
-  max-block-size: 956px;
-}
-
-.sixth-section_image {
+.image-blur {
   filter: blur(1.9rem);
 }
 
@@ -383,11 +382,7 @@
   max-block-size: 63px;
 }
 
-.seventh-section {
-  max-block-size: 998px;
-}
-
-.seventh-section_image {
+.image-invert {
   filter: invert(1);
 }
 
@@ -403,11 +398,7 @@
   max-block-size: 105px;
 }
 
-.eighth-section {
-  max-block-size: 1040px;
-}
-
-.eight-section_image {
+.image-multiply-filter {
   filter: hue-rotate(300deg) opacity(0.7) contrast(150%) brightness(130%);
 }
 
@@ -428,43 +419,22 @@
 }
 
 .dialog-button {
-  position: relative;
   display: grid;
   grid-auto-flow: column;
   justify-self: center;
   inline-size: 335px;
   block-size: 55px;
-  border: 2px solid #000;
-  padding: 0;
-  background-color: #fff;
-  cursor: pointer;
 }
 
 .dialog-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  transform-origin: top left;
-  scale: 0 1;
-  transition: 0.5s ease-in-out;
   z-index: 0;
 }
 
-.dialog-button:hover::after {
-  scale: 1 1;
-}
-
 .dialog-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0px 0px #000;
   transition: box-shadow 0.3s ease;
 }
 
-.dialog-button__text {
+.dialog__text {
   justify-self: center;
   align-self: center;
   font-family: var(--accent-font-family);
@@ -516,7 +486,7 @@ dialog::backdrop {
   block-size: 39px;
 }
 
-.opened-dialog-button__text {
+.opened-dialog__text {
   max-inline-size: 234px;
   max-block-size: 63px;
   text-transform: uppercase;
@@ -532,6 +502,81 @@ dialog::backdrop {
   text-transform: uppercase;
   line-height: 90%;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .header, .main, .section {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .header {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .logo-group {
+    margin: 40px auto;
+  }
+  .section-title {
+    width: 100%;
+    max-width: 100%;
+    block-size: auto;
+    padding: 8px 4px;
+    font-size: 16px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+  }
+  .card__image, .image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    block-size: auto;
+  }
+  .card__content, .text__content {
+    width: 100%;
+    max-width: 100%;
+    max-block-size: none;
+    block-size: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .card__text {
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-block-size: none;
+  }
+  .card__actions {
+    width: 100%;
+    max-width: 100%;
+    margin: 12px 0 24px;
+    padding: 0;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  .dialog-button {
+    width: calc(100% - 32px);
+    max-width: 335px;
+    margin: 0 auto 40px;
+  }
+  .content__opened-dialog {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 16px;
+  }
+  .opened-dialog-button {
+    width: calc(100% - 32px);
+    max-width: 293px;
+    margin: 16px;
+  }
 }
 
 @media (width <= 375px) {
@@ -552,7 +597,6 @@ dialog::backdrop {
 
   .first-section {
     max-inline-size: 375px;
-    max-block-size: 758px;
   }
 
   .section-title {
@@ -565,7 +609,7 @@ dialog::backdrop {
     max-block-size: 371px;
   }
 
-  .image-truck {
+  .image {
     max-inline-size: 371px;
     block-size: 371px;
   }
@@ -590,7 +634,6 @@ dialog::backdrop {
 
   .second-section {
     max-inline-size: 375px;
-    max-block-size: 820px;
   }
 
   .second-card__content {
@@ -609,7 +652,6 @@ dialog::backdrop {
 
   .fourth-section {
     max-inline-size: 375px;
-    max-block-size: 799px;
   }
 
   .fourth-card__content {
@@ -628,7 +670,6 @@ dialog::backdrop {
 
   .fifth-section {
     max-inline-size: 375px;
-    max-block-size: 841px;
   }
 
   .fifth-card__content {
@@ -645,9 +686,22 @@ dialog::backdrop {
     max-block-size: 252px;
   }
 
+  .seventh-card__content {
+    max-inline-size: 371px;
+    max-block-size: 369px;
+  }
+
+  .seventh-card-text__content {
+    max-inline-size: 321px;
+    max-block-size: 256px;
+  }
+
+  .seventh-card__text {
+    max-block-size: 189px;
+  }
+
   .eighth-section {
     max-inline-size: 375px;
-    max-block-size: 862px;
   }
 
   .eighth-card__content {
@@ -674,7 +728,7 @@ dialog::backdrop {
     block-size: 84px;
   }
 
-  .dialog-button__text {
+  .dialog__text {
     align-self: start;
   }
 
@@ -682,5 +736,25 @@ dialog::backdrop {
     justify-self: center;
     inline-size: 28px;
     block-size: 28px;
+  }
+
+  .content__opened-dialog {
+    max-inline-size: 261px;
+    max-block-size: 63px;
+  }
+
+  .dialog__floppy-icon {
+    inline-size: 38px;
+    block-size: 38px;
+  }
+
+  .opened-dialog__text {
+    inline-size: 234px;
+    max-block-size: 63px;
+  }
+
+  .opened-dialog-button {
+    inline-size: 261px;
+    max-block-size: 38px;
   }
 }
