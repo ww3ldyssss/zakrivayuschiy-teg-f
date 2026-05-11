@@ -171,37 +171,31 @@
 }
 
 .like-icon:hover .main-body {
-  opacity: 1;
   fill: var(--icon-contour-color);
   transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon:active .core {
-  opacity: 1;
   fill: var(--animation-fill-color);
   transition: fill 0.3s linear 0s;
 }
 
 .like-icon:active .main-body {
-  opacity: 1;
   fill: var(--animation-fill-color);
   transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon.is-liked .core {
-  opacity: 1;
   fill: var(--animation-fill-color);
   transition: fill 0.3s linear 0s;
 }
 
 .like-icon.is-liked .main-body {
-  opacity: 1;
   fill: var(--animation-fill-color);
   transition: fill 0.3s linear 0.05s;
 }
 
 .like-icon.is-liked .contour {
-  opacity: 1;
   fill: var(--animation-fill-color);
   transition: fill 0.3s linear 0.06s;
 }
@@ -297,112 +291,28 @@
   filter: brightness(300%);
 }
 
-.second-card__content {
-  max-block-size: 264px;
-}
-
-.second-card-text__content {
-  max-block-size: 151px;
-}
-
-.second-card__text {
-  max-block-size: 105px;
-}
-
 .image-contrast {
   filter: contrast(200%);
-}
-
-.third-card__content {
-  max-block-size: 222px;
-}
-
-.third-card__text {
-  max-block-size: 63px;
 }
 
 .image-rotate {
   filter: hue-rotate(-90deg);
 }
 
-.fourth-card__content {
-  max-block-size: 264px;
-}
-
-.fourth-card-text__content {
-  max-block-size: 151px;
-}
-
-.fourth-card__text {
-  max-block-size: 105px;
-}
-
 .image-sepia {
   filter: sepia(90%);
-}
-
-.fifth-card__content {
-  max-block-size: 285px;
-}
-
-.fifth-card-text__content {
-  max-block-size: 172px;
-}
-
-.fifth-card__text {
-  max-block-size: 126px;
 }
 
 .image-blur {
   filter: blur(1.9rem);
 }
 
-.sixth-card__content {
-  max-block-size: 222px;
-}
-
-.sixth-card-text__content {
-  max-block-size: 109px;
-}
-
-.sixth-card__text {
-  max-block-size: 63px;
-}
-
 .image-invert {
   filter: invert(1);
 }
 
-.seventh-card__content {
-  max-block-size: 264px;
-}
-
-.seventh-card-text__content {
-  max-block-size: 151px;
-}
-
-.seventh-card__text {
-  max-block-size: 105px;
-}
-
 .image-multiply-filter {
   filter: hue-rotate(300deg) opacity(0.7) contrast(150%) brightness(130%);
-}
-
-.eighth-card__content {
-  max-block-size: 306px;
-}
-
-.eight-card-text__content {
-  max-block-size: 193px;
-}
-
-.eighth-card__text {
-  max-block-size: 126px;
-}
-
-.eighth-card__hint {
-  max-block-size: 42px;
 }
 
 .dialog-button {
@@ -492,13 +402,8 @@ dialog::backdrop {
   }
 
   .main {
-    max-width: var(--container-width);
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
     margin-block-end: clamp(60px, 6.94vw, 100px);
     padding: 0;
-    box-sizing: border-box;
   }
 
   .section {
@@ -512,7 +417,7 @@ dialog::backdrop {
     max-width: clamp(310px, 47vw, 676px);
     width: 100%;
     padding: clamp(4px, 0.5vw, 10px) clamp(6px, 0.7vw, 10px);
-    font-size: clamp(15px, 1.2vw, var(--main-font-size));
+    font-size: var(--main-font-size);
     line-height: 100%;
     box-sizing: border-box;
     word-wrap: break-word;
@@ -534,7 +439,7 @@ dialog::backdrop {
   .card__watermark {
     font-family: var(--accent-font-family), sans-serif;
     max-inline-size: clamp(70px, 6.8vw, 98px);
-    font-size: clamp(12px, 0.97vw, 14px);
+    font-size: 14px;
     line-height: 100%;
     position: absolute;
     top: clamp(16px, 1.74vw, 25px);
@@ -553,7 +458,7 @@ dialog::backdrop {
 
   .text__content {
     font-family: var(--main-font-family), sans-serif;
-    font-size: clamp(14px, 1.2vw, var(--main-font-size));
+    font-size: var(--main-font-size);
     line-height: 21px;
     max-width: clamp(295px, 44.9vw, 646px);
     width: 100%;
@@ -611,9 +516,6 @@ dialog::backdrop {
   }
 
   .dialog-button {
-    display: grid;
-    grid-auto-flow: column;
-    justify-self: center;
     inline-size: clamp(280px, 23vw, 335px);
     block-size: clamp(50px, 3.8vw, 55px);
   }
@@ -621,7 +523,6 @@ dialog::backdrop {
 
 @media (width <= 375px) {
   .header {
-    max-block-size: 327px;
     margin: 100px 0px;
     padding: 122px 16px;
   }
@@ -647,12 +548,11 @@ dialog::backdrop {
 
   .card__content {
     max-inline-size: 100%;
-    max-block-size: 100%;
   }
 
   .text__content {
     max-inline-size: 321px;
-    max-block-size: 214px;
+    max-block-size: 100%;
   }
 
   .card__text {
@@ -746,7 +646,6 @@ dialog::backdrop {
 
   .content__opened-dialog {
     max-inline-size: 261px;
-    max-block-size: 63px;
   }
 
   .dialog__floppy-icon {
@@ -756,7 +655,6 @@ dialog::backdrop {
 
   .opened-dialog__text {
     inline-size: 234px;
-    max-block-size: 63px;
     font-size: var(--button-text-font-size);
   }
 
